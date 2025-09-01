@@ -1,10 +1,10 @@
 require 'mysql2'
 
-db_client = Mysql2::Client.new(
+client = Mysql2::Client.new(
   host: "localhost",
   username: "hotel_user",
-  password: "senha123", # coloca a senha que você usou
+  password: "Senha@123",
   database: "hotel_system"
 )
 
-puts "Conectado ao MySQL!"
+puts "Conexão realizada com sucesso!"
