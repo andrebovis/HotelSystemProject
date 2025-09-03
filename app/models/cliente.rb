@@ -1,4 +1,4 @@
-require_relative 'db'
+require_relative '../../config/db'
 
 class Cliente
   attr_accessor :id, :nome, :email, :telefone
@@ -10,9 +10,9 @@ class Cliente
     @telefone = telefone
   end
 
-  # Criar cliente
   def save
     db = create_client
+    begin
     if @id.nil?
       db.query("INSERT INTO clientes (nome, email, telefone)
                 VALUES ('#{@nome}', '#{@email}', '#{@telefone}')")
@@ -20,10 +20,11 @@ class Cliente
     else
       db.query("UPDATE clientes SET nome='#{@nome}', email='#{@email}', telefone='#{@telefone}' WHERE id=#{@id}")
       puts "✅ Cliente #{@id} atualizado!"
+         rescue Mysql2::Error => e
+      puts "⚠️ Erro ao salvar cliente: #{e.message}"
     end
   end
 
-  # Listar todos
   def self.all
     db = create_client
     results = db.query("SELECT * FROM clientes")

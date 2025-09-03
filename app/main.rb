@@ -18,4 +18,6 @@ Quarto.all
 reserva = Reserva.new(cliente_id: 1, quarto_id: 1, data_checkin: "2025-09-01", data_checkout: "2025-09-05")
 reserva.save
 
+puts "Reservas:"
+
 Reserva.all

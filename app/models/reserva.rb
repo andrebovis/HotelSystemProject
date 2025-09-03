@@ -13,6 +13,7 @@ class Reserva
 
   def save
     db = create_client
+    begin
     if @id.nil?
       db.query("INSERT INTO reservas (cliente_id, quarto_id, data_checkin, data_checkout)
                 VALUES (#{@cliente_id}, #{@quarto_id}, '#{@data_checkin}', '#{@data_checkout}')")
@@ -20,6 +21,8 @@ class Reserva
     else
       db.query("UPDATE reservas SET cliente_id=#{@cliente_id}, quarto_id=#{@quarto_id}, data_checkin='#{@data_checkin}', data_checkout='#{@data_checkout}' WHERE id=#{@id}")
       puts "✅ Reserva #{@id} atualizada!"
+         rescue Mysql2::Error => e
+      puts "⚠️ Erro ao salvar reserva: #{e.message}"
     end
   end
 
