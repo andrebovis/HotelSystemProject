@@ -13,14 +13,15 @@ class Cliente
   def save
     db = create_client
     begin
-    if @id.nil?
-      db.query("INSERT INTO clientes (nome, email, telefone)
-                VALUES ('#{@nome}', '#{@email}', '#{@telefone}')")
-      puts "✅ Cliente #{@nome} cadastrado!"
-    else
-      db.query("UPDATE clientes SET nome='#{@nome}', email='#{@email}', telefone='#{@telefone}' WHERE id=#{@id}")
-      puts "✅ Cliente #{@id} atualizado!"
-         rescue Mysql2::Error => e
+      if @id.nil?
+        db.query("INSERT INTO clientes (nome, email, telefone)
+                  VALUES ('#{@nome}', '#{@email}', '#{@telefone}')")
+        puts "✅ Cliente #{@nome} cadastrado!"
+      else
+        db.query("UPDATE clientes SET nome='#{@nome}', email='#{@email}', telefone='#{@telefone}' WHERE id=#{@id}")
+        puts "✅ Cliente #{@id} atualizado!"
+      end
+    rescue Mysql2::Error => e
       puts "⚠️ Erro ao salvar cliente: #{e.message}"
     end
   end
