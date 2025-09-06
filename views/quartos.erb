@@ -1,0 +1,18 @@
+<h2>🛏️ Lista de Quartos</h2>
+<table border="1" cellpadding="5">
+  <tr>
+    <th>ID</th>
+    <th>Número</th>
+    <th>Tipo</th>
+    <th>Preço</th>
+  </tr>
+  <% @quartos.each do |q| %>
+    <tr>
+      <td><%= q["id"] %></td>
+      <td><%= q["numero"] %></td>
+      <td><%= q["tipo"] %></td>
+      <td><%= q["preco"] %></td>
+    </tr>
+  <% end %>
+</table>
+<a href="/">⬅ Voltar</a>

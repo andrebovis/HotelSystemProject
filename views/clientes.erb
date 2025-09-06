@@ -1,0 +1,18 @@
+<h2>👤 Lista de Clientes</h2>
+<table border="1" cellpadding="5">
+  <tr>
+    <th>ID</th>
+    <th>Nome</th>
+    <th>Email</th>
+    <th>Telefone</th>
+  </tr>
+  <% @clientes.each do |c| %>
+    <tr>
+      <td><%= c["id"] %></td>
+      <td><%= c["nome"] %></td>
+      <td><%= c["email"] %></td>
+      <td><%= c["telefone"] %></td>
+    </tr>
+  <% end %>
+</table>
+<a href="/">⬅ Voltar</a>
