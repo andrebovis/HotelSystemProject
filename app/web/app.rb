@@ -1,4 +1,3 @@
-# app/web/app.rb
 require 'sinatra'
 require 'sinatra/json'
 require_relative '../../config/db'
@@ -6,31 +5,28 @@ require_relative '../models/cliente'
 require_relative '../models/quarto'
 require_relative '../models/reserva'
 
+# rota inicial
 get '/' do
-  "🏨 Bem-vindo ao HotelProjectRuby com Sinatra!"
+  erb :index
 end
 
+# listar clientes (HTML)
 get '/clientes' do
-  clientes = []
   db = create_client
-  results = db.query("SELECT * FROM clientes")
-  results.each { |row| clientes << row }
-  json clientes
+  @clientes = db.query("SELECT * FROM clientes")
+  erb :clientes
 end
 
+# listar quartos (HTML)
 get '/quartos' do
-  quartos = []
   db = create_client
-  results = db.query("SELECT * FROM quartos")
-  results.each { |row| quartos << row }
-  json quartos
+  @quartos = db.query("SELECT * FROM quartos")
+  erb :quartos
 end
 
+# listar reservas (HTML)
 get '/reservas' do
-  reservas = []
   db = create_client
-  results = db.query("SELECT * FROM reservas")
-  results.each { |row| reservas << row }
-  json reservas
+  @reservas = db.query("SELECT * FROM reservas")
+  erb :reservas
 end
-
