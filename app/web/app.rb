@@ -1,32 +1,33 @@
-require 'sinatra'
+require 'sinatra/base'
 require 'sinatra/json'
 require_relative '../../config/db'
 require_relative '../models/cliente'
 require_relative '../models/quarto'
 require_relative '../models/reserva'
 
-# rota inicial
-get '/' do
-  erb :index
-end
+class HotelApp < Sinatra::Base
+  set :views, File.expand_path('../../views', __FILE__)
 
-# listar clientes (HTML)
-get '/clientes' do
-  db = create_client
-  @clientes = db.query("SELECT * FROM clientes")
-  erb :clientes
-end
+  # rota inicial
+  get '/' do
+    erb :index
+  end
 
-# listar quartos (HTML)
-get '/quartos' do
-  db = create_client
-  @quartos = db.query("SELECT * FROM quartos")
-  erb :quartos
-end
+  get '/clientes' do
+    db = create_client
+    @clientes = db.query("SELECT * FROM clientes")
+    erb :clientes
+  end
 
-# listar reservas (HTML)
-get '/reservas' do
-  db = create_client
-  @reservas = db.query("SELECT * FROM reservas")
-  erb :reservas
+  get '/quartos' do
+    db = create_client
+    @quartos = db.query("SELECT * FROM quartos")
+    erb :quartos
+  end
+
+  get '/reservas' do
+    db = create_client
+    @reservas = db.query("SELECT * FROM reservas")
+    erb :reservas
+  end
 end

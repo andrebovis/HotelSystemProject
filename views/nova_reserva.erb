@@ -1,0 +1,26 @@
+<h2>📝 Nova Reserva</h2>
+<form action="/reserva" method="POST">
+  <label>Nome:</label><br>
+  <input type="text" name="nome" required><br><br>
+
+  <label>Email:</label><br>
+  <input type="email" name="email" required><br><br>
+
+  <label>Telefone:</label><br>
+  <input type="text" name="telefone" required><br><br>
+
+  <label>Tipo de Quarto:</label><br>
+  <select name="tipo_quarto">
+    <option value="solteiro">Solteiro</option>
+    <option value="casal">Casal</option>
+  </select><br><br>
+
+  <label>Data Check-in:</label><br>
+  <input type="date" name="checkin" required><br><br>
+
+  <label>Data Check-out:</label><br>
+  <input type="date" name="checkout" required><br><br>
+
+  <button type="submit">Confirmar Reserva</button>
+</form>
+<a href="/">⬅ Voltar</a>

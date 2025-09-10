@@ -1,4 +1,3 @@
-# run.rb
 require_relative './app/web/app'
 
-HotelApp.run! port: 4567
+run HotelApp
