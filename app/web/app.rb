@@ -6,7 +6,9 @@ require_relative '../models/quarto'
 require_relative '../models/reserva'
 
 class HotelApp < Sinatra::Base
-  set :views, File.expand_path('../../views', __FILE__)
+  # configurações corretas dentro da classe
+  set :public_folder, File.expand_path('../../public', __dir__)
+  set :views, File.expand_path('../views', __dir__)
 
   # rota inicial
   get '/' do
